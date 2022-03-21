@@ -1,14 +1,12 @@
 require 'faker'
 
 # Users
-users = []
-
 (1..5).each do
   user_params = Faker::Internet.user('username', 'email', 'password').merge({
     image: Faker::Avatar.image,
     bio: Faker::Quote.most_interesting_man_in_the_world
   })
-  users << User.create(user_params)
+  User.create(user_params)
 end
 
 # Items
