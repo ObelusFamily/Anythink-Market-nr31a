@@ -6,21 +6,21 @@ require 'faker'
     image: Faker::Avatar.image,
     bio: Faker::Quote.most_interesting_man_in_the_world
   })
-  User.create(user_params)
+  User.first_or_create(user_params)
 end
 
 # Items
 
 (1..5).each do
   random_user = User.all.sample
-  item = Item.create(
+  item = Item.first_or_create(
     title: Faker::Movie.title,
     description: Faker::Movie.quote,
     image: Faker::LoremFlickr.image,
     user: random_user
   )
 
-  Comment.create(
+  Comment.first_or_create(
     body: Faker::Quote.famous_last_words,
     user: User.all.sample,
     item: item
